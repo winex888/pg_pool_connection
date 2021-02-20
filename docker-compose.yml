@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  pgbounser:
+    image: pgbouncer/pgbouncer
+    environment:
+        PGBOUNCER_LISTEN_ADDR: localhost
+        PGBOUNCER_LISTEN_PORT: 6421
+        DATABASES: " temp1 = host=127.0.0.1 port=5432 dbname=mil_town user=postgres password=postgres, benchmark = host=localhost port=5432 dbname=benchmark user=postgres password=postgres, benchmark_v = host=10.10.127.55 port=5432 dbname=benchmark"
+    ports:
+      - "6421:6421"
+    expose:
+      - 6421
+    network_mode: host
+
+  pgbounser2:
+    image: pgbouncer/pgbouncer
+    environment:
+        PGBOUNCER_LISTEN_ADDR: localhost
+        PGBOUNCER_LISTEN_PORT: 6422
+        DATABASES: " temp1 = host=127.0.0.1 port=5432 dbname=mil_town user=postgres password=postgres, benchmark = host=localhost port=5432 dbname=benchmark user=postgres password=postgres, benchmark_v = host=10.10.127.55 port=5432 dbname=benchmark"
+    ports:
+      - "6422:6422"
+    expose:
+      - 6422
+    network_mode: host
+
+  haproxy:
+    image: haproxy:2.3.5-alpine
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+    network_mode: host

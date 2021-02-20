@@ -3,13 +3,13 @@
 ```bash
 pgbouncer -d -R pgbouncer.ini
 ```
-#Рестарт postgresql
+# Рестарт postgresql
 Отредактировать настройки Postgres и перезапустить.
 max_connection по умолчанию 100. Для тестов можно установить 1000.
 ```bash
 /etc/init.d/postgresql restart
 ```
-#Нагрузочное тестирование
+# Нагрузочное тестирование
 Для тестирования будем использовать стандартную утилиту pgbench.
 Сначала создадим базу и залним ее командой:
 ```bash
@@ -38,7 +38,7 @@ SELECT pg_terminate_backend(pg_stat_activity.pid)
   FROM pg_stat_activity
   WHERE pg_stat_activity.datname = 'benchmark'
 ```
-#Масштабирование pgbouncer
+# Масштабирование pgbouncer
 ![Alt text](docs/Scale.png)
 
 Для горизонтального масштабирования используем haproxy.

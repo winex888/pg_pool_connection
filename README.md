@@ -46,7 +46,7 @@ SELECT pg_terminate_backend(pg_stat_activity.pid)
 ```bash
 docker-compose up
 ```
-test 2 3
+test 2 3 6
 ```bash
 pgbench -h localhost -p 5433 -U postgres -c 300 -j 2 -P 10 -T 60 benchmark
 ```

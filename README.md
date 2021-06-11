@@ -43,6 +43,7 @@ SELECT pg_terminate_backend(pg_stat_activity.pid)
 
 Для горизонтального масштабирования используем haproxy.
 Настройки описаны в `haproxy.cfg`. Запустить compose
+
 ```bash
 docker-compose up
 ```
